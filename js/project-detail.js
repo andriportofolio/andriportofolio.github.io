@@ -25,6 +25,9 @@ const descriptionEl = document.getElementById('project-description');
 const coverEl = document.getElementById('project-cover');
 const galleryEl = document.getElementById('process-gallery');
 const emptyEl = document.getElementById('empty-process');
+const processNavEl = document.getElementById('process-nav');
+const prevButton = document.getElementById('process-prev');
+const nextButton = document.getElementById('process-next');
 const lightboxEl = document.getElementById('lightbox');
 const lightboxImageEl = document.getElementById('lightbox-image');
 const closeButton = document.getElementById('lightbox-close');
@@ -63,8 +66,36 @@ if (!project) {
 
       button.addEventListener('click', () => openLightbox(imagePath, image.alt));
     });
+    updateProcessArrows();
   }
 }
+
+function getProcessScrollAmount() {
+  const firstItem = galleryEl.querySelector('.process-item');
+  if (!firstItem) return galleryEl.clientWidth * 0.85;
+  const gap = parseFloat(getComputedStyle(galleryEl).gap) || 0;
+  return firstItem.getBoundingClientRect().width + gap;
+}
+
+function updateProcessArrows() {
+  if (!processNavEl || !prevButton || !nextButton) return;
+  const hasOverflow = galleryEl.scrollWidth > galleryEl.clientWidth + 2;
+  processNavEl.hidden = !hasOverflow;
+  if (!hasOverflow) return;
+  prevButton.disabled = galleryEl.scrollLeft <= 2;
+  nextButton.disabled = galleryEl.scrollLeft + galleryEl.clientWidth >= galleryEl.scrollWidth - 2;
+}
+
+prevButton.addEventListener('click', () => {
+  galleryEl.scrollBy({ left: -getProcessScrollAmount(), behavior: 'smooth' });
+});
+
+nextButton.addEventListener('click', () => {
+  galleryEl.scrollBy({ left: getProcessScrollAmount(), behavior: 'smooth' });
+});
+
+galleryEl.addEventListener('scroll', updateProcessArrows, { passive: true });
+window.addEventListener('resize', updateProcessArrows);
 
 function openLightbox(src, alt) {
   lightboxImageEl.src = src;
