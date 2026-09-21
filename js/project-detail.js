@@ -80,7 +80,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ai.jpg',
     description: 'Dokumentasi proyek WordAIshow, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/wordaishow/'
+    processFolder: 'assets/images/projects/wordaishow/',
+    process: ['process-73.jpg', 'process-74.jpg', 'process-75.jpg', 'process-76.jpg']
   },
   'hut67-tarumanagara': {
     title: 'Hut 67 Yayasan Tarumanagara',
