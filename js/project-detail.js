@@ -159,7 +159,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/api.jpg',
     description: 'Dokumentasi proyek Festival API Ke-6 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/festival-api/'
+    processFolder: 'assets/images/projects/festival-api/',
+    process: ['process-122.jpg', 'process-123.jpg', 'process-124.jpg']
   },
   'nhk-jakarta': {
     title: 'NHK jakarta fair',
