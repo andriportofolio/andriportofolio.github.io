@@ -88,7 +88,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/taruna.jpg',
     description: 'Dokumentasi proyek Hut 67 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/hut67-tarumanagara/'
+    processFolder: 'assets/images/projects/hut67-tarumanagara/',
+    process: ['process-77.jpg', 'process-78.jpg', 'process-79.jpg', 'process-80.jpg', 'process-81.jpg', 'process-82.jpg', 'process-83.jpg', 'process-84.jpg']
   },
   'ifex': {
     title: 'IFEX-Indonesia International Furniture Expo',
