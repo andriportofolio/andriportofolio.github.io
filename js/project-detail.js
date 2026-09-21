@@ -56,7 +56,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/mfi.jpg',
     description: 'Dokumentasi proyek Manufacturing Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/manufacturing/'
+    processFolder: 'assets/images/projects/manufacturing/',
+    process: ['process-51.jpg', 'process-52.jpg', 'process-53.jpg', 'process-54.jpg', 'process-55.jpg', 'process-56.jpg', 'process-57.jpg', 'process-58.jpg', 'process-59.jpg', 'process-60.jpg']
   },
   'plastics-rubber': {
     title: 'Plastics & Rubber Indonesia',
