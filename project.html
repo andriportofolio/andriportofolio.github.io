@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detail proyek event dan pameran Andri Saputra.">
+  <title>Detail Proyek | Andri Saputra</title>
+  <link rel="stylesheet" href="css/project-detail.css">
+</head>
+<body>
+  <main class="project-page">
+    <a href="index.html#projects" class="back-link">← Kembali ke Proyek</a>
+
+    <section class="project-hero" aria-labelledby="project-title">
+      <div class="project-cover-wrap">
+        <img id="project-cover" class="project-cover" src="" alt="" loading="eager">
+      </div>
+
+      <div class="project-heading">
+        <p id="project-category" class="project-category"></p>
+        <h1 id="project-title"></h1>
+        <p id="project-description" class="project-description"></p>
+      </div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="section-heading">
+        <p class="eyebrow">PROJECT JOURNEY</p>
+        <h2 id="process-title">Proses Proyek</h2>
+        <p class="section-intro">Dokumentasi proses dan pelaksanaan proyek dari tahap persiapan hingga pekerjaan di lapangan.</p>
+      </div>
+
+      <div id="process-gallery" class="process-gallery"></div>
+      <p id="empty-process" class="empty-process" hidden>Dokumentasi proses untuk proyek ini belum tersedia.</p>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Tutup">×</button>
+    <img id="lightbox-image" src="" alt="">
+  </div>
+
+  <script src="js/project-detail.js"></script>
+</body>
+</html>
