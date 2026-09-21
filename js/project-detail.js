@@ -120,7 +120,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/int.jpg',
     description: 'Dokumentasi proyek INTERPOSE-Design interior UNTAR, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/interpose-untar/'
+    processFolder: 'assets/images/projects/interpose-untar/',
+    process: ['process-96.jpg', 'process-97.jpg', 'process-98.jpg', 'process-99.jpg', 'process-100.jpg']
   },
   'inagritech': {
     title: 'Inagritech',
