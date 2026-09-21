@@ -96,7 +96,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ifex.jpg',
     description: 'Dokumentasi proyek IFEX-Indonesia International Furniture Expo, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/ifex/'
+    processFolder: 'assets/images/projects/ifex/',
+    process: ['process-85.jpg', 'process-86.jpg', 'process-87.jpg', 'process-88.jpg']
   },
   'iffina': {
     title: 'IFFINA-Indonesia Meubel & Design Expo',
