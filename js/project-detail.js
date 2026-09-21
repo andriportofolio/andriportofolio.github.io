@@ -24,7 +24,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/inamarine.jpg',
     description: 'Dokumentasi proyek Inamarine, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/inamarine/'
+    processFolder: 'assets/images/projects/inamarine/',
+    process: ['process-17.jpg', 'process-18.jpg', 'process-19.jpg', 'process-20.jpg', 'process-21.jpg']
   },
   'food-hotel': {
     title: 'Food Hotel Indonesia',
