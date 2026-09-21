@@ -137,7 +137,7 @@ const projects = {
     cover: 'assets/images/yayasan.jpg',
     description: 'Dokumentasi proyek HUT 66 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/hut66-yayasan/',
-    process: ['process-104.jpg', 'process-105.jpg', 'process-106.jpg', 'process-107.jpg', 'process-108.jpg', 'process-109.jpg', 'process-110.jpg', 'process-111.jpg', 'process-112.jpg', 'process-203.jpg']
+    process: ['process-104.jpg', 'process-105.jpg', 'process-106.jpg', 'process-107.jpg', 'process-108.jpg', 'process-109.jpg', 'process-110.jpg', 'process-111.jpg', 'process-112.jpg', 'process-113.jpg']
   },
   'roso-nate': {
     title: 'Interpose Reso Nate',
