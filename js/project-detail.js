@@ -32,7 +32,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/fhiandri.jpg',
     description: 'Dokumentasi proyek Food Hotel Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/food-hotel/'
+    processFolder: 'assets/images/projects/food-hotel/',
+    process: ['process-22.jpg', 'process-23.jpg', 'process-24.jpg', 'process-25.jpg', 'process-26.jpg', 'process-27.jpg', 'process-28.jpg', 'process-30.jpg', 'process-31.jpg']
   },
   'asia-tech': {
     title: 'Asia Tech x Singapure 2026',
