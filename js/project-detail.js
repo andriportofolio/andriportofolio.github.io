@@ -112,7 +112,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/mbloc.jpg',
     description: 'Dokumentasi proyek Mbloc Design Week, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/mbloc/'
+    processFolder: 'assets/images/projects/mbloc/',
+    process: ['process-92.jpg', 'process-93.jpg', 'process-94.jpg', 'process-95.jpg']
   },
   'interpose-untar': {
     title: 'INTERPOSE-Design interior UNTAR',
