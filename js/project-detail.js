@@ -144,7 +144,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/roso.jpg',
     description: 'Dokumentasi proyek Interpose Reso Nate, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/roso-nate/'
+    processFolder: 'assets/images/projects/roso-nate/',
+    process: ['process-114.jpg', 'process-115.jpg', 'process-116.jpg', 'process-117.jpg', 'process-118.jpg', 'process-119.jpg', 'process-120.jpg', 'process-121.jpg']
   },
   'mbloc-design-week-2': {
     title: 'Mbloc Design Week',
