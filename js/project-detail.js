@@ -64,7 +64,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/pri.jpg',
     description: 'Dokumentasi proyek Plastics & Rubber Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/plastics-rubber/'
+    processFolder: 'assets/images/projects/plastics-rubber/',
+    process: ['process-61.jpg', 'process-62.jpg', 'process-63.jpg', 'process-64.jpg', 'process-65.jpg', 'process-66.jpg', 'process-67.jpg']
   },
   'neo-photo': {
     title: 'Neo Photo Indonesia',
