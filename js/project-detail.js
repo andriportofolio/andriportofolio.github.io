@@ -72,7 +72,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/neo.jpg',
     description: 'Dokumentasi proyek Neo Photo Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/neo-photo/'
+    processFolder: 'assets/images/projects/neo-photo/',
+    process: ['process-68.jpg', 'process-69.jpg', 'process-70.jpg', 'process-71.jpg', 'process-72.jpg']
   },
   'wordaishow': {
     title: 'WordAIshow',
