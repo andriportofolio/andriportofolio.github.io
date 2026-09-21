@@ -104,7 +104,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/iff.jpg',
     description: 'Dokumentasi proyek IFFINA-Indonesia Meubel & Design Expo, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/iffina/'
+    processFolder: 'assets/images/projects/iffina/',
+    process: ['process-89.jpg', 'process-90.jpg', 'process-92.jpg']
   },
   'mbloc': {
     title: 'Mbloc Design Week',
