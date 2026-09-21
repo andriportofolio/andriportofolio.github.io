@@ -8,7 +8,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ieeandri.jpg',
     description: 'Dokumentasi proyek Indonesia Energy & Engineering, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/iee/process-1.jpg', 'assets/images/projects/iee/process-2.jpg', 'assets/images/projects/iee/process-3.jpg', 'assets/images/projects/iee/process-4.jpg', 'assets/images/projects/iee/process-5.jpg', 'assets/images/projects/iee/process-6.jpg'
+    processFolder: 'assets/images/projects/iee/',
+    process: ['process-1.jpg', 'process-2.jpg', 'process-3.jpg', 'process-4.jpg', 'process-5.jpg', 'process-6.jpg']
   },
   'technology': {
     title: 'Indonesia Technology & Innovation',
@@ -202,7 +203,7 @@ const projects = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const projectId = params.get('id') || 'iee';
+const projectId = (params.get('id') || 'iee').trim().toLowerCase();
 const project = projects[projectId];
 
 const titleEl = document.getElementById('project-title');
@@ -280,39 +281,67 @@ if (!project) {
   let loadedProcessCount = 0;
   let finishedProcessCount = 0;
 
-  for (let index = 1; index <= PROCESS_PHOTO_LIMIT; index++) {
-    const imagePath = `${project.processFolder}process-${index}.jpg`;
-    const button = document.createElement('button');
-    button.className = 'process-item';
-    button.type = 'button';
-    button.hidden = true;
-    button.setAttribute('aria-label', `Buka foto proses ${index}`);
+  // Jika sebuah proyek memiliki daftar foto khusus, gunakan daftar itu.
+  // Jika tidak, cari otomatis process-1 sampai process-20.
+  const extensions = ['jpg', 'jpeg', 'png', 'webp'];
 
-    const image = document.createElement('img');
-    image.src = imagePath;
-    image.alt = `${project.title} — proses ${index}`;
-
-    image.addEventListener('load', () => {
-      button.hidden = false;
-      loadedProcessCount++;
-      finishedProcessCount++;
-      emptyEl.hidden = loadedProcessCount !== 0;
-      updateProcessArrows();
+  function probeImage(path) {
+    return new Promise((resolve) => {
+      const probe = new Image();
+      probe.onload = () => resolve(path);
+      probe.onerror = () => resolve(null);
+      probe.src = path;
     });
-
-    image.addEventListener('error', () => {
-      finishedProcessCount++;
-      button.remove();
-      if (finishedProcessCount === PROCESS_PHOTO_LIMIT && loadedProcessCount === 0) {
-        showEmptyState();
-      }
-      updateProcessArrows();
-    });
-
-    button.appendChild(image);
-    galleryEl.appendChild(button);
-    button.addEventListener('click', () => openLightbox(imagePath, image.alt));
   }
+
+  async function findProcessImage(index) {
+    if (Array.isArray(project.process)) {
+      const filename = project.process[index - 1];
+      if (!filename) return null;
+      return await probeImage(project.processFolder + filename);
+    }
+
+    for (const extension of extensions) {
+      const path = `${project.processFolder}process-${index}.${extension}`;
+      const result = await probeImage(path);
+      if (result) return result;
+    }
+    return null;
+  }
+
+  async function loadProcessPhotos() {
+    const max = Array.isArray(project.process) ? project.process.length : PROCESS_PHOTO_LIMIT;
+
+    for (let index = 1; index <= max; index++) {
+      const path = await findProcessImage(index);
+      if (!path) continue;
+
+      const button = document.createElement('button');
+      button.className = 'process-item';
+      button.type = 'button';
+      button.setAttribute('aria-label', `Buka foto proses ${index}`);
+
+      const image = document.createElement('img');
+      image.src = path;
+      image.alt = `${project.title} — proses ${index}`;
+      image.loading = 'lazy';
+
+      button.appendChild(image);
+      galleryEl.appendChild(button);
+      loadedProcessCount++;
+      emptyEl.hidden = true;
+
+      button.addEventListener('click', () => openLightbox(path, image.alt));
+    }
+
+    if (loadedProcessCount === 0) {
+      showEmptyState();
+    } else {
+      updateProcessArrows();
+    }
+  }
+
+  loadProcessPhotos();
 }
 
 prevButton.addEventListener('click', () => {
