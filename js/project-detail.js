@@ -5,8 +5,12 @@ const projects = {
     cover: 'assets/images/ieeandri.jpg',
     description: 'Dokumentasi proyek pameran Indonesia Energy & Engineering, dari persiapan hingga pelaksanaan di lapangan.',
     process: [
-      // Tambahkan foto proses IEE di sini setelah file fotonya tersedia.
-      // Contoh: 'assets/images/projects/iee/process-1.jpg'
+      'assets/images/projects/iee/process-1.jpg',
+      'assets/images/projects/iee/process-2.jpg',
+      'assets/images/projects/iee/process-3.jpg',
+      'assets/images/projects/iee/process-4.jpg',
+      'assets/images/projects/iee/process-5.jpg',
+      'assets/images/projects/iee/process-6.jpg'
     ]
   }
 };
