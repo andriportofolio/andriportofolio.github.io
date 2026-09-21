@@ -48,7 +48,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/uniglobal.jpg',
     description: 'Dokumentasi proyek Uni-Global Retail Exhibition, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/uni-global/'
+    processFolder: 'assets/images/projects/uni-global/',
+    process: ['process-41.jpg', 'process-42.jpg', 'process-43.jpg', 'process-44.jpg', 'process-45.jpg', 'process-46.jpg', 'process-47.jpg', 'process-48.jpg', 'process-49.jpg', 'process-50.jpg']
   },
   'manufacturing': {
     title: 'Manufacturing Indonesia',
