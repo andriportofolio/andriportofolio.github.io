@@ -9,7 +9,7 @@ const projects = {
     cover: 'assets/images/ieeandri.jpg',
     description: 'Dokumentasi proyek Indonesia Energy & Engineering, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/iee/',
-    process: ['process-1.jpg', 'process-2.jpg', 'process-3.jpg', 'process-4.jpg', 'process-5.jpg', 'process-6.jpg', 'process-7.jgp', 'process-8.jpg']
+    process: ['process-1.jpg', 'process-2.jpg', 'process-3.jpg', 'process-4.jpg', 'process-5.jpg', 'process-6.jpg', 'process-7.jpg', 'process-8.jpg']
   },
   'technology': {
     title: 'Indonesia Technology & Innovation',
