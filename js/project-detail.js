@@ -16,7 +16,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/intiandri.jpg',
     description: 'Dokumentasi proyek Indonesia Technology & Innovation, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/technology/'
+    processFolder: 'assets/images/projects/technology/', 
+    process: ['process-9.jpg', 'process-10.jpg', 'process-11.jpg', 'process-12.jpg', 'process-13.jpg', 'process-14.jpg', 'process-15.jpg', 'process-16.jpg']
   },
   'inamarine': {
     title: 'Inamarine',
