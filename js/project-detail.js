@@ -40,7 +40,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/asiatech.jpg',
     description: 'Dokumentasi proyek Asia Tech x Singapure 2026, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/asia-tech/'
+    processFolder: 'assets/images/projects/asia-tech/',
+    process: ['process-32.jpg', 'process-33.jpg', 'process-34.jpg', 'process-35.jpg', 'process-36.jpg', 'process-37.jpg', 'process-38.jpg', 'process-39.jpg', 'process-40.jpg']
   },
   'uni-global': {
     title: 'Uni-Global Retail Exhibition',
