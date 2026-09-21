@@ -125,6 +125,10 @@ body.lightbox-open {
   line-height: 1.7;
 }
 
+.process-carousel {
+  position: relative;
+}
+
 .process-gallery {
   display: flex;
   flex-wrap: nowrap;
@@ -134,20 +138,56 @@ body.lightbox-open {
   padding: 4px 4px 18px;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-.process-gallery::-webkit-scrollbar {
-  height: 8px;
+
+.process-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-.process-gallery::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 999px;
+.process-arrow {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .94);
+  color: #171717;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
 }
 
-.process-gallery::-webkit-scrollbar-thumb {
-  background: #c9c9c9;
-  border-radius: 999px;
+.process-arrow:hover:not(:disabled) {
+  background: #fff;
+  transform: scale(1.06);
+}
+
+.process-arrow:disabled {
+  opacity: .35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.process-arrow:focus-visible {
+  outline: 3px solid rgba(200, 16, 46, .35);
+  outline-offset: 3px;
 }
 
 .process-item {
@@ -257,6 +297,12 @@ body.lightbox-open {
 
   .process-gallery {
     gap: 14px;
+  }
+
+  .process-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 23px;
   }
 
   .process-item,
