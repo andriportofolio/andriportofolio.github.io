@@ -128,7 +128,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ina.jpg',
     description: 'Dokumentasi proyek Inagritech, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/inagritech/'
+    processFolder: 'assets/images/projects/inagritech/',
+    process: ['process-101.jpg', 'process-102.jpg', 'process-103.jpg']
   },
   'hut66-yayasan': {
     title: 'HUT 66 Yayasan Tarumanagara',
