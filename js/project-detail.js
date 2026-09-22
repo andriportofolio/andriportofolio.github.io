@@ -422,7 +422,7 @@ if (!project) {
   } else {
     updateProcessArrows();
   }
-  }
+}
 
   function closeLightbox() {
   lightboxEl.classList.remove('is-open');
