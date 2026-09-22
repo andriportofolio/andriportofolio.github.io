@@ -7,7 +7,6 @@ const projects = {
     title: 'Indonesia Energy & Engineering',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ieeandri.jpg',
-    description: 'Dokumentasi proyek Indonesia Energy & Engineering, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/iee/',
     process: ['process-1.jpg', 'process-2.jpg', 'process-3.jpg', 'process-4.jpg', 'process-5.jpg', 'process-6.jpg', 'process-7.jpg', 'process-8.jpg']
   },
@@ -15,7 +14,6 @@ const projects = {
     title: 'Indonesia Technology & Innovation',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/intiandri.jpg',
-    description: 'Dokumentasi proyek Indonesia Technology & Innovation, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/technology/', 
     process: ['process-9.jpg', 'process-10.jpg', 'process-11.jpg', 'process-12.jpg', 'process-13.jpg', 'process-14.jpg', 'process-15.jpg', 'process-16.jpg']
   },
@@ -23,7 +21,6 @@ const projects = {
     title: 'Inamarine',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/inamarine.jpg',
-    description: 'Dokumentasi proyek Inamarine, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/inamarine/',
     process: ['process-17.jpg', 'process-18.jpg', 'process-19.jpg', 'process-20.jpg', 'process-21.jpg']
   },
@@ -31,7 +28,6 @@ const projects = {
     title: 'Food Hotel Indonesia',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/fhiandri.jpg',
-    description: 'Dokumentasi proyek Food Hotel Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/food-hotel/',
     process: ['process-22.jpg', 'process-23.jpg', 'process-24.jpg', 'process-25.jpg', 'process-26.jpg', 'process-27.jpg', 'process-28.jpg', 'process-30.jpg', 'process-31.jpg']
   },
@@ -39,7 +35,6 @@ const projects = {
     title: 'Asia Tech x Singapure 2026',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/asiatech.jpg',
-    description: 'Dokumentasi proyek Asia Tech x Singapure 2026, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/asia-tech/',
     process: ['process-32.jpg', 'process-33.jpg', 'process-34.jpg', 'process-35.jpg', 'process-36.jpg', 'process-37.jpg', 'process-38.jpg', 'process-39.jpg', 'process-40.jpg']
   },
@@ -47,7 +42,6 @@ const projects = {
     title: 'Uni-Global Retail Exhibition',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/uniglobal.jpg',
-    description: 'Dokumentasi proyek Uni-Global Retail Exhibition, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/uni-global/',
     process: ['process-41.jpg', 'process-42.jpg', 'process-43.jpg', 'process-44.jpg', 'process-45.jpg', 'process-46.jpg', 'process-47.jpg', 'process-48.jpg', 'process-49.jpg', 'process-50.jpg']
   },
@@ -55,7 +49,6 @@ const projects = {
     title: 'Manufacturing Indonesia',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/mfi.jpg',
-    description: 'Dokumentasi proyek Manufacturing Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/manufacturing/',
     process: ['process-51.jpg', 'process-52.jpg', 'process-53.jpg', 'process-54.jpg', 'process-55.jpg', 'process-56.jpg', 'process-57.jpg', 'process-58.jpg', 'process-59.jpg', 'process-60.jpg']
   },
@@ -63,7 +56,6 @@ const projects = {
     title: 'Plastics & Rubber Indonesia',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/pri.jpg',
-    description: 'Dokumentasi proyek Plastics & Rubber Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/plastics-rubber/',
     process: ['process-61.jpg', 'process-62.jpg', 'process-63.jpg', 'process-64.jpg', 'process-65.jpg', 'process-66.jpg', 'process-67.jpg']
   },
@@ -71,7 +63,6 @@ const projects = {
     title: 'Neo Photo Indonesia',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/neo.jpg',
-    description: 'Dokumentasi proyek Neo Photo Indonesia, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/neo-photo/',
     process: ['process-68.jpg', 'process-69.jpg', 'process-70.jpg', 'process-71.jpg', 'process-72.jpg']
   },
@@ -79,7 +70,6 @@ const projects = {
     title: 'WordAIshow',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ai.jpg',
-    description: 'Dokumentasi proyek WordAIshow, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/wordaishow/',
     process: ['process-73.jpg', 'process-74.jpg', 'process-75.jpg', 'process-76.jpg']
   },
@@ -87,7 +77,6 @@ const projects = {
     title: 'Hut 67 Yayasan Tarumanagara',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/taruna.jpg',
-    description: 'Dokumentasi proyek Hut 67 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/hut67-tarumanagara/',
     process: ['process-77.jpg', 'process-78.jpg', 'process-79.jpg', 'process-80.jpg', 'process-81.jpg', 'process-82.jpg', 'process-83.jpg', 'process-84.jpg']
   },
@@ -95,7 +84,6 @@ const projects = {
     title: 'IFEX-Indonesia International Furniture Expo',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ifex.jpg',
-    description: 'Dokumentasi proyek IFEX-Indonesia International Furniture Expo, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/ifex/',
     process: ['process-85.jpg', 'process-86.jpg', 'process-87.jpg', 'process-88.jpg']
   },
@@ -103,7 +91,6 @@ const projects = {
     title: 'IFFINA-Indonesia Meubel & Design Expo',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/iff.jpg',
-    description: 'Dokumentasi proyek IFFINA-Indonesia Meubel & Design Expo, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/iffina/',
     process: ['process-89.jpg', 'process-90.jpg', 'process-91.jpg']
   },
@@ -111,7 +98,6 @@ const projects = {
     title: 'Mbloc Design Week',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/mbloc.jpg',
-    description: 'Dokumentasi proyek Mbloc Design Week, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/mbloc/',
     process: ['process-92.jpg', 'process-93.jpg', 'process-94.jpg', 'process-95.jpg']
   },
@@ -119,7 +105,6 @@ const projects = {
     title: 'INTERPOSE-Design interior UNTAR',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/int.jpg',
-    description: 'Dokumentasi proyek INTERPOSE-Design interior UNTAR, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/interpose-untar/',
     process: ['process-96.jpg', 'process-97.jpg', 'process-98.jpg', 'process-99.jpg', 'process-100.jpg']
   },
@@ -127,7 +112,6 @@ const projects = {
     title: 'Inagritech',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/ina.jpg',
-    description: 'Dokumentasi proyek Inagritech, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/inagritech/',
     process: ['process-101.jpg', 'process-102.jpg', 'process-103.jpg']
   },
@@ -135,7 +119,6 @@ const projects = {
     title: 'HUT 66 Yayasan Tarumanagara',
     category: 'EVENT PROJECT',
     cover: 'assets/images/yayasan.jpg',
-    description: 'Dokumentasi proyek HUT 66 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/hut66-yayasan/',
     process: ['process-104.jpg', 'process-105.jpg', 'process-106.jpg', 'process-107.jpg', 'process-108.jpg', 'process-109.jpg', 'process-110.jpg', 'process-111.jpg', 'process-112.jpg', 'process-113.jpg']
   },
@@ -143,7 +126,6 @@ const projects = {
     title: 'Interpose Reso Nate',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/roso.jpg',
-    description: 'Dokumentasi proyek Interpose Reso Nate, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/roso-nate/',
     process: ['process-114.jpg', 'process-115.jpg', 'process-116.jpg', 'process-117.jpg', 'process-118.jpg', 'process-119.jpg', 'process-120.jpg', 'process-121.jpg']
   },
@@ -151,14 +133,12 @@ const projects = {
     title: 'Mbloc Design Week',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/mblock1.jpg',
-    description: 'Dokumentasi proyek Mbloc Design Week, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/mbloc-design-week-2/'
   },
   'festival-api': {
     title: 'Festival API Ke-6 Yayasan Tarumanagara',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/api.jpg',
-    description: 'Dokumentasi proyek Festival API Ke-6 Yayasan Tarumanagara, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/festival-api/',
     process: ['process-122.jpg', 'process-123.jpg', 'process-124.jpg']
   },
@@ -166,14 +146,12 @@ const projects = {
     title: 'NHK jakarta fair',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/nhk.jpg',
-    description: 'Dokumentasi proyek NHK jakarta fair, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/nhk-jakarta/'
   },
   'toyota-gaikindo': {
     title: 'TOYOTA - Gaikindo International Autoshow',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/toyotag.jpg',
-    description: 'Dokumentasi proyek TOYOTA - Gaikindo International Autoshow, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/toyota-gaikindo/',
     process: ['process-125.jpg', 'process-126.jpg']
   },
@@ -181,14 +159,12 @@ const projects = {
     title: 'IIPE -Indonesia International Pet Expo',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/iipe.jpg',
-    description: 'Dokumentasi proyek IIPE -Indonesia International Pet Expo, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/iipe/'
   },
   'toyota-sumarecon': {
     title: 'Toyota - Sumarecon Kelapa Gading',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/toyotas.jpg',
-    description: 'Dokumentasi proyek Toyota - Sumarecon Kelapa Gading, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/toyota-sumarecon/',
     process: ['process-127.jpg', 'process-128.jpg', 'process-129.jpg', 'process-130.jpg', 'process-131.jpg']
   },
@@ -196,28 +172,24 @@ const projects = {
     title: 'Rakernas PDI Perjuangan',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/rekernas.jpg',
-    description: 'Dokumentasi proyek Rakernas PDI Perjuangan, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/rakernas-pdi/'
   },
   'project-26': {
     title: 'Exhibition Project 06',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/projects/project-26/cover.jpg',
-    description: 'Dokumentasi proyek Exhibition Project 06, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/project-26/'
   },
   'project-27': {
     title: 'Exhibition Project 07',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/projects/project-27/cover.jpg',
-    description: 'Dokumentasi proyek Exhibition Project 07, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/project-27/'
   },
   'project-28': {
     title: 'Exhibition Project 08',
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/projects/project-28/cover.jpg',
-    description: 'Dokumentasi proyek Exhibition Project 08, dari tahap persiapan hingga pelaksanaan di lapangan.',
     processFolder: 'assets/images/projects/project-28/'
   }
 };
