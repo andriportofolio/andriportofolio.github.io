@@ -1,6 +1,6 @@
 // Data semua proyek. Untuk menambah foto proses, cukup masukkan file ke folder proyek sesuai nama process-1.jpg, process-2.jpg, dst.
 
-const PROCESS_PHOTO_LIMIT = 20;
+const PROCESS_PHOTO_LIMIT = 30;
 
 const projects = {
   'iee': {
@@ -221,6 +221,7 @@ const projects = {
   }
 };
 
+
 const params = new URLSearchParams(window.location.search);
 const projectId = (params.get('id') || 'iee').trim().toLowerCase();
 const project = projects[projectId];
@@ -234,39 +235,46 @@ const emptyEl = document.getElementById('empty-process');
 const processNavEl = document.getElementById('process-nav');
 const prevButton = document.getElementById('process-prev');
 const nextButton = document.getElementById('process-next');
+
 const lightboxEl = document.getElementById('lightbox');
 const lightboxImageEl = document.getElementById('lightbox-image');
-const closeButton = document.getElementById('lightbox-close');
+const closeButton = document.querySelector('.lightbox-close');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+
+let lightboxImages = [];
+let lightboxIndex = 0;
 
 function getProcessScrollAmount() {
   const firstItem = galleryEl.querySelector('.process-item:not([hidden])');
   if (!firstItem) return galleryEl.clientWidth * 0.85;
+
   const gap = parseFloat(getComputedStyle(galleryEl).gap) || 0;
   return firstItem.getBoundingClientRect().width + gap;
 }
 
 function updateProcessArrows() {
   if (!processNavEl || !prevButton || !nextButton) return;
+
   const hasOverflow = galleryEl.scrollWidth > galleryEl.clientWidth + 2;
   processNavEl.hidden = !hasOverflow;
+
   if (!hasOverflow) {
     prevButton.disabled = true;
     nextButton.disabled = true;
     return;
   }
+
   prevButton.disabled = galleryEl.scrollLeft <= 2;
-  nextButton.disabled = galleryEl.scrollLeft + galleryEl.clientWidth >= galleryEl.scrollWidth - 2;
+  nextButton.disabled =
+    galleryEl.scrollLeft + galleryEl.clientWidth >= galleryEl.scrollWidth - 2;
 }
 
-let lightboxImages = [];
-let lightboxIndex = 0;
-
-const lightboxPrev = document.querySelector('.lightbox-prev');
-const lightboxNext = document.querySelector('.lightbox-next');
-
 function openLightbox(images, index) {
+  if (!lightboxEl || !lightboxImageEl || !images.length) return;
+
   lightboxImages = images;
-  lightboxIndex = index;
+  lightboxIndex = Math.max(0, Math.min(index, images.length - 1));
 
   updateLightbox();
 
@@ -274,133 +282,111 @@ function openLightbox(images, index) {
   lightboxEl.setAttribute('aria-hidden', 'false');
   document.body.classList.add('lightbox-open');
 
-  closeButton.focus();
+  if (closeButton) closeButton.focus();
 }
 
 function updateLightbox() {
-  if (!lightboxImages.length) return;
+  if (!lightboxImages.length || !lightboxImageEl) return;
 
-  lightboxImageEl.src = lightboxImages[lightboxIndex].src;
-  lightboxImageEl.alt = lightboxImages[lightboxIndex].alt;
+  const current = lightboxImages[lightboxIndex];
 
-  lightboxPrev.disabled = lightboxIndex === 0;
-  lightboxNext.disabled =
-    lightboxIndex === lightboxImages.length - 1;
+  lightboxImageEl.src = current.src;
+  lightboxImageEl.alt = current.alt || '';
+
+  if (lightboxPrev) {
+    lightboxPrev.disabled = lightboxIndex === 0;
+    lightboxPrev.hidden = lightboxImages.length <= 1;
+  }
+
+  if (lightboxNext) {
+    lightboxNext.disabled = lightboxIndex === lightboxImages.length - 1;
+    lightboxNext.hidden = lightboxImages.length <= 1;
+  }
 }
 
 function closeLightbox() {
+  if (!lightboxEl) return;
+
   lightboxEl.classList.remove('is-open');
   lightboxEl.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('lightbox-open');
-  lightboxImageEl.src = '';
+
+  if (lightboxImageEl) {
+    lightboxImageEl.removeAttribute('src');
+    lightboxImageEl.alt = '';
+  }
 
   lightboxImages = [];
   lightboxIndex = 0;
 }
 
-lightboxPrev.addEventListener('click', (event) => {
-  event.stopPropagation();
-
-  if (lightboxIndex > 0) {
-    lightboxIndex--;
-    updateLightbox();
-  }
-});
-
-lightboxNext.addEventListener('click', (event) => {
-  event.stopPropagation();
-
-  if (lightboxIndex < lightboxImages.length - 1) {
-    lightboxIndex++;
-    updateLightbox();
-  }
-});
-
 function showEmptyState() {
-  emptyEl.hidden = false;
-  processNavEl.hidden = true;
+  if (emptyEl) emptyEl.hidden = false;
+  if (processNavEl) processNavEl.hidden = true;
 }
 
-if (!project) {
-  document.title = 'Proyek Tidak Ditemukan | Andri Saputra';
-  categoryEl.textContent = 'Proyek';
-  titleEl.textContent = 'Proyek Tidak Ditemukan';
-  descriptionEl.textContent = 'Proyek yang kamu buka belum tersedia.';
-  coverEl.style.display = 'none';
-  showEmptyState();
-} else {
-  document.title = `${project.title} | Andri Saputra`;
-  categoryEl.textContent = project.category;
-  titleEl.textContent = project.title;
-  descriptionEl.textContent = project.description;
-  coverEl.src = project.cover;
-  coverEl.alt = project.title;
-  coverEl.addEventListener('error', () => {
-    coverEl.style.display = 'none';
+async function probeImage(path) {
+  return new Promise((resolve) => {
+    const probe = new Image();
+
+    probe.onload = () => resolve(path);
+    probe.onerror = () => resolve(null);
+
+    probe.src = path;
   });
+}
 
-  let loadedProcessCount = 0;
-  let finishedProcessCount = 0;
-
-  // Jika sebuah proyek memiliki daftar foto khusus, gunakan daftar itu.
-  // Jika tidak, cari otomatis process-1 sampai process-20.
+async function findProcessImage(index) {
   const extensions = ['jpg', 'jpeg', 'png', 'webp'];
 
-  function probeImage(path) {
-    return new Promise((resolve) => {
-      const probe = new Image();
-      probe.onload = () => resolve(path);
-      probe.onerror = () => resolve(null);
-      probe.src = path;
-    });
+  // Untuk proyek yang sudah memiliki daftar nama file khusus.
+  if (Array.isArray(project.process)) {
+    const filename = project.process[index - 1];
+    if (!filename) return null;
+
+    return probeImage(project.processFolder + filename);
   }
 
-  async function findProcessImage(index) {
-    if (Array.isArray(project.process)) {
-      const filename = project.process[index - 1];
-      if (!filename) return null;
-      return await probeImage(project.processFolder + filename);
-    }
+  // Untuk proyek yang belum memiliki daftar khusus:
+  // cari process-1 sampai process-30 dengan beberapa ekstensi.
+  const candidates = extensions.map((extension) =>
+    `${project.processFolder}process-${index}.${extension}`
+  );
 
-    for (const extension of extensions) {
-      const path = `${project.processFolder}process-${index}.${extension}`;
-      const result = await probeImage(path);
-      if (result) return result;
-    }
-    return null;
-  }
+  const results = await Promise.all(candidates.map(probeImage));
+  return results.find(Boolean) || null;
+}
 
-  async function loadProcessPhotos() {
+async function loadProcessPhotos() {
+  if (!galleryEl || !project) return;
+
+  galleryEl.innerHTML = '';
+  if (emptyEl) emptyEl.hidden = true;
+
   const max = Array.isArray(project.process)
     ? project.process.length
     : PROCESS_PHOTO_LIMIT;
 
-  const processImages = [];
+  // Semua pengecekan gambar dilakukan paralel supaya tidak terasa
+  // "loading terus" karena menunggu foto satu per satu.
+  const paths = await Promise.all(
+    Array.from({ length: max }, (_, i) => findProcessImage(i + 1))
+  );
 
-  for (let index = 1; index <= max; index++) {
-    const path = await findProcessImage(index);
-
-    if (!path) continue;
-
-    processImages.push({
-      src: path,
-      alt: `${project.title} — proses ${index}`
-    });
-  }
+  const processImages = paths
+    .filter(Boolean)
+    .map((src, index) => ({
+      src,
+      alt: `${project.title} — proses ${index + 1}`
+    }));
 
   processImages.forEach((item, index) => {
     const button = document.createElement('button');
-
     button.className = 'process-item';
     button.type = 'button';
-
-    button.setAttribute(
-      'aria-label',
-      `Buka foto proses ${index + 1}`
-    );
+    button.setAttribute('aria-label', `Buka foto proses ${index + 1}`);
 
     const image = document.createElement('img');
-
     image.src = item.src;
     image.alt = item.alt;
     image.loading = 'lazy';
@@ -408,39 +394,138 @@ if (!project) {
     button.appendChild(image);
     galleryEl.appendChild(button);
 
-    loadedProcessCount++;
-
-    emptyEl.hidden = true;
-
     button.addEventListener('click', () => {
       openLightbox(processImages, index);
     });
   });
 
-  if (loadedProcessCount === 0) {
+  if (!processImages.length) {
     showEmptyState();
   } else {
     updateProcessArrows();
   }
 }
 
-  function closeLightbox() {
-  lightboxEl.classList.remove('is-open');
-  lightboxEl.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('lightbox-open');
-  lightboxImageEl.src = '';
+function setupEvents() {
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      galleryEl.scrollBy({
+        left: -getProcessScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      galleryEl.scrollBy({
+        left: getProcessScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  if (galleryEl) {
+    galleryEl.addEventListener('scroll', updateProcessArrows, {
+      passive: true
+    });
+  }
+
+  window.addEventListener('resize', updateProcessArrows);
+
+  if (closeButton) {
+    closeButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      closeLightbox();
+    });
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (event) => {
+      event.stopPropagation();
+
+      if (lightboxIndex > 0) {
+        lightboxIndex--;
+        updateLightbox();
+      }
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', (event) => {
+      event.stopPropagation();
+
+      if (lightboxIndex < lightboxImages.length - 1) {
+        lightboxIndex++;
+        updateLightbox();
+      }
+    });
+  }
+
+  if (lightboxEl) {
+    lightboxEl.addEventListener('click', (event) => {
+      if (event.target === lightboxEl) {
+        closeLightbox();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightboxEl || !lightboxEl.classList.contains('is-open')) return;
+
+    if (event.key === 'Escape') {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key === 'ArrowLeft' && lightboxIndex > 0) {
+      lightboxIndex--;
+      updateLightbox();
+    }
+
+    if (
+      event.key === 'ArrowRight' &&
+      lightboxIndex < lightboxImages.length - 1
+    ) {
+      lightboxIndex++;
+      updateLightbox();
+    }
+  });
 }
 
-closeButton.addEventListener('click', closeLightbox);
+function initProject() {
+  if (!project) {
+    document.title = 'Proyek Tidak Ditemukan | Andri Saputra';
 
-lightboxEl.addEventListener('click', (event) => {
-  if (event.target === lightboxEl) {
-    closeLightbox();
-  }
-});
+    if (categoryEl) categoryEl.textContent = 'Proyek';
+    if (titleEl) titleEl.textContent = 'Proyek Tidak Ditemukan';
+    if (descriptionEl) {
+      descriptionEl.textContent = 'Proyek yang kamu buka belum tersedia.';
+    }
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && lightboxEl.classList.contains('is-open')) {
-    closeLightbox();
+    if (coverEl) coverEl.style.display = 'none';
+
+    showEmptyState();
+    return;
   }
-});
+
+  document.title = `${project.title} | Andri Saputra`;
+
+  if (categoryEl) categoryEl.textContent = project.category;
+  if (titleEl) titleEl.textContent = project.title;
+  if (descriptionEl) descriptionEl.textContent = project.description;
+
+  if (coverEl) {
+    coverEl.src = project.cover;
+    coverEl.alt = project.title;
+
+    coverEl.addEventListener('error', () => {
+      coverEl.style.display = 'none';
+    });
+  }
+
+  setupEvents();
+  loadProcessPhotos();
+}
+
+initProject();
