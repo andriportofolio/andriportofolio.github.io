@@ -174,7 +174,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/toyotag.jpg',
     description: 'Dokumentasi proyek TOYOTA - Gaikindo International Autoshow, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/toyota-gaikindo/'
+    processFolder: 'assets/images/projects/toyota-gaikindo/',
+    process: ['process-125.jpg', 'process-126.jpg']
   },
   'iipe': {
     title: 'IIPE -Indonesia International Pet Expo',
