@@ -41,9 +41,18 @@
     </section>
   </main>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Tutup">×</button>
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close">&times;</button>
+
+    <button class="lightbox-prev" aria-label="Foto sebelumnya">
+        &#10094;
+    </button>
+
     <img id="lightbox-image" src="" alt="">
+
+    <button class="lightbox-next" aria-label="Foto berikutnya">
+        &#10095;
+    </button>
   </div>
 
   <script src="js/project-detail.js"></script>
