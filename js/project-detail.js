@@ -258,13 +258,34 @@ function updateProcessArrows() {
   nextButton.disabled = galleryEl.scrollLeft + galleryEl.clientWidth >= galleryEl.scrollWidth - 2;
 }
 
-function openLightbox(src, alt) {
-  lightboxImageEl.src = src;
-  lightboxImageEl.alt = alt;
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+
+function openLightbox(images, index) {
+  lightboxImages = images;
+  lightboxIndex = index;
+
+  updateLightbox();
+
   lightboxEl.classList.add('is-open');
   lightboxEl.setAttribute('aria-hidden', 'false');
   document.body.classList.add('lightbox-open');
+
   closeButton.focus();
+}
+
+function updateLightbox() {
+  if (!lightboxImages.length) return;
+
+  lightboxImageEl.src = lightboxImages[lightboxIndex].src;
+  lightboxImageEl.alt = lightboxImages[lightboxIndex].alt;
+
+  lightboxPrev.disabled = lightboxIndex === 0;
+  lightboxNext.disabled =
+    lightboxIndex === lightboxImages.length - 1;
 }
 
 function closeLightbox() {
@@ -272,7 +293,28 @@ function closeLightbox() {
   lightboxEl.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('lightbox-open');
   lightboxImageEl.src = '';
+
+  lightboxImages = [];
+  lightboxIndex = 0;
 }
+
+lightboxPrev.addEventListener('click', (event) => {
+  event.stopPropagation();
+
+  if (lightboxIndex > 0) {
+    lightboxIndex--;
+    updateLightbox();
+  }
+});
+
+lightboxNext.addEventListener('click', (event) => {
+  event.stopPropagation();
+
+  if (lightboxIndex < lightboxImages.length - 1) {
+    lightboxIndex++;
+    updateLightbox();
+  }
+});
 
 function showEmptyState() {
   emptyEl.hidden = false;
@@ -329,54 +371,72 @@ if (!project) {
   }
 
   async function loadProcessPhotos() {
-    const max = Array.isArray(project.process) ? project.process.length : PROCESS_PHOTO_LIMIT;
+  const max = Array.isArray(project.process)
+    ? project.process.length
+    : PROCESS_PHOTO_LIMIT;
 
-    for (let index = 1; index <= max; index++) {
-      const path = await findProcessImage(index);
-      if (!path) continue;
+  const processImages = [];
 
-      const button = document.createElement('button');
-      button.className = 'process-item';
-      button.type = 'button';
-      button.setAttribute('aria-label', `Buka foto proses ${index}`);
+  for (let index = 1; index <= max; index++) {
+    const path = await findProcessImage(index);
 
-      const image = document.createElement('img');
-      image.src = path;
-      image.alt = `${project.title} — proses ${index}`;
-      image.loading = 'lazy';
+    if (!path) continue;
 
-      button.appendChild(image);
-      galleryEl.appendChild(button);
-      loadedProcessCount++;
-      emptyEl.hidden = true;
-
-      button.addEventListener('click', () => openLightbox(path, image.alt));
-    }
-
-    if (loadedProcessCount === 0) {
-      showEmptyState();
-    } else {
-      updateProcessArrows();
-    }
+    processImages.push({
+      src: path,
+      alt: `${project.title} — proses ${index}`
+    });
   }
 
-  loadProcessPhotos();
+  processImages.forEach((item, index) => {
+    const button = document.createElement('button');
+
+    button.className = 'process-item';
+    button.type = 'button';
+
+    button.setAttribute(
+      'aria-label',
+      `Buka foto proses ${index + 1}`
+    );
+
+    const image = document.createElement('img');
+
+    image.src = item.src;
+    image.alt = item.alt;
+    image.loading = 'lazy';
+
+    button.appendChild(image);
+    galleryEl.appendChild(button);
+
+    loadedProcessCount++;
+
+    emptyEl.hidden = true;
+
+    button.addEventListener('click', () => {
+      openLightbox(processImages, index);
+    });
+  });
+
+  if (loadedProcessCount === 0) {
+    showEmptyState();
+  } else {
+    updateProcessArrows();
+  }
+  }
+
+  function closeLightbox() {
+  lightboxEl.classList.remove('is-open');
+  lightboxEl.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lightbox-open');
+  lightboxImageEl.src = '';
 }
 
-prevButton.addEventListener('click', () => {
-  galleryEl.scrollBy({ left: -getProcessScrollAmount(), behavior: 'smooth' });
-});
-
-nextButton.addEventListener('click', () => {
-  galleryEl.scrollBy({ left: getProcessScrollAmount(), behavior: 'smooth' });
-});
-
-galleryEl.addEventListener('scroll', updateProcessArrows, { passive: true });
-window.addEventListener('resize', updateProcessArrows);
 closeButton.addEventListener('click', closeLightbox);
 
 lightboxEl.addEventListener('click', (event) => {
-  if (event.target === lightboxEl) closeLightbox();
+  if (event.target === lightboxEl) {
+    closeLightbox();
+  }
 });
 
 document.addEventListener('keydown', (event) => {
