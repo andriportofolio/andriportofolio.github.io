@@ -227,48 +227,147 @@ body.lightbox-open {
   text-align: center;
 }
 
+/* ================================
+   LIGHTBOX + SLIDER
+================================ */
+
 .lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background: rgba(0, 0, 0, .90);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .2s ease, visibility .2s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.94);
+    padding: 40px 80px;
 }
 
 .lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
+    display: flex;
 }
 
+/* Foto besar */
 .lightbox img {
-  display: block;
-  max-width: min(1200px, 94vw);
-  max-height: 88vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 6px;
+    display: block;
+
+    max-width: 90vw;
+    max-height: 88vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
 }
 
+/* Tombol X */
 .lightbox-close {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  width: 46px;
-  height: 46px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .12);
-  color: #fff;
-  font-size: 34px;
-  line-height: 1;
-  cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    background: transparent;
+
+    color: #fff;
+    font-size: 38px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Tombol panah */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 50px;
+    height: 70px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #fff;
+
+    font-size: 38px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 3;
+
+    transition: background 0.2s ease,
+                opacity 0.2s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Posisi panah */
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+/* Panah tidak aktif */
+.lightbox-prev:disabled,
+.lightbox-next:disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+    .lightbox {
+        padding: 50px 45px;
+    }
+
+    .lightbox img {
+        max-width: 92vw;
+        max-height: 82vh;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 40px;
+        height: 55px;
+
+        font-size: 28px;
+    }
+
+    .lightbox-prev {
+        left: 5px;
+    }
+
+    .lightbox-next {
+        right: 5px;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 12px;
+
+        font-size: 32px;
+    }
 }
 
 .lightbox-close:hover {
