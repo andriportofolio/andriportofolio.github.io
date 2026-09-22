@@ -189,7 +189,8 @@ const projects = {
     category: 'EXHIBITION PROJECT',
     cover: 'assets/images/toyotas.jpg',
     description: 'Dokumentasi proyek Toyota - Sumarecon Kelapa Gading, dari tahap persiapan hingga pelaksanaan di lapangan.',
-    processFolder: 'assets/images/projects/toyota-sumarecon/'
+    processFolder: 'assets/images/projects/toyota-sumarecon/',
+    process: ['process-127.jpg', 'process-128.jpg', 'process-129.jpg', 'process-130.jpg', 'process-131.jpg']
   },
   'rakernas-pdi': {
     title: 'Rakernas PDI Perjuangan',
