@@ -69,7 +69,7 @@ let progressTimer = null;
 
 const imageSources = [
 
-    "assets/images/home1.jpg",
+    "assets/images/asiatech.jpg",
 
     "assets/images/home2.jpg",
 
