@@ -71,9 +71,9 @@ const imageSources = [
 
     "assets/images/asiatech.jpg",
 
-    "assets/images/home2.jpg",
+    "assets/images/toyotag.jpg",
 
-    "assets/images/home3.jpg"
+    "assets/images/ifex.jpg"
 
 ];
 
