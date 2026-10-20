@@ -3,6 +3,13 @@
 const PROCESS_PHOTO_LIMIT = 30;
 
 const projects = {
+  'allpack2026': {
+    title: 'ALLPack 2026',
+    category: 'EXHIBITION PROJECT',
+    cover: 'assets/images/allpack2026.jpg',
+    processFolder: 'assets/images/projects/allpack2026/',
+    process: []
+  },
   'iee': {
     title: 'Indonesia Energy & Engineering',
     category: 'EXHIBITION PROJECT',
